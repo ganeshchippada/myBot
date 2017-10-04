@@ -14,6 +14,12 @@ var connector = new builder.ChatConnector({
 	appPassword: config.get('application.appConfig.appPassword'),
 });
 
+server.get('/', restify.serveStatic({
+ directory: __dirname,
+ default: '/index.html'
+}));
+
+
 // Listen for messages from users 
 server.post('/api/messages', connector.listen());
 
